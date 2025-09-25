@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyEase Services | Making Everyday Life Easier</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Custom Variables and Reset --- */
+        :root {
+            --color-navy: #0F2C59; /* Primary */
+            --color-teal: #1E838B; /* Accent */
+            --color-white: #ffffff;
+            --color-light-grey: #F4F6F8; /* Soft background */
+            --color-text-dark: #333333;
+            --radius-default: 12px;
+            --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Base Typography and Layout */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-white);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-navy);
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-teal);
+            transition: color 0.3s ease;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .light-bg {
+            background-color: var(--color-light-grey);
+        }
+
+        .dark-bg {
+            background-color: var(--color-navy);
+            color: var(--color-white);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .lead {
+            font-size: 1.25em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--color-teal);
+            color: var(--color-white);
+            box-shadow: 0 8px 20px rgba(30, 131, 139, 0.5);
+            font-size: 1.1em;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-navy);
+            box-shadow: 0 10px 25px rgba(15, 44, 89, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* --- Navigation Bar --- */
+        #navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--color-white);
+            box-shadow: var(--shadow-subtle);
+            padding: 15px 0;
+        }
+
+        #navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #navbar .logo a {
+            color: var(--color-navy);
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+
+        #navbar ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #navbar ul li {
+            margin-left: 30px;
+        }
+
+        #navbar ul li a {
+            color: var(--color-navy);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        #navbar ul li a:hover {
+            color: var(--color-teal);
+        }
+
+        .btn-nav {
+            background-color: var(--color-teal);
+            color: var(--color-white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--color-navy);
+            color: var(--color-white);
+        }
+        
+      
+        .menu-toggle {
+            display: none; 
+            font-size: 1.5em;
+            cursor: pointer;
+            color: var(--color-navy);
+        }
+
+
+        /* --- Hero Section --- */
+        #hero {
+            
+            background: linear-gradient(rgba(15, 44, 89, 0.75), rgba(15, 44, 89, 0.75)), url('100+ Sunset Aesthetic Wallpapers and Backgrounds (Free, High-Res).jpeg') center center/cover;
+            color: var(--color-white);
+            text-align: center;
+            padding: 180px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5em;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 10px;
+        }
+
+        .hero-content .tagline {
+            font-size: 2em;
+            font-weight: 300;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            color: var(--color-white);
+        }
+
+
+        /* --- Services Section --- */
+        #services h2 {
+            margin-bottom: 60px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .service-card {
+            background-color: var(--color-white);
+            
+            display: flex; 
+            flex-direction: column;
+            padding: 30px;
+            border-radius: var(--radius-default);
+            text-align: center;
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--color-teal);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon-box {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background-color: rgba(30, 131, 139, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-card i {
+            font-size: 1.8em;
+            color: var(--color-teal);
+        }
+        
+        /* CSS for Uniform Image Box and Image itself 🎨 */
+        .service-image-placeholder {
+            width: 100%;
+            height: 120px; 
+            background-color: #e3f2f4;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-navy);
+            font-weight: 500;
+            font-size: 0.9em;
+            border: 1px dashed var(--color-teal);
+            overflow: hidden; 
+        }
+        
+        .service-img {
+            width: 100%;
+            height: 100%;
+            
+            object-fit: cover; 
+            display: block;
+        }
+        
+
+        .service-card h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--color-navy);
+            margin-bottom: 10px;
+        }
+
+
+        /* --- Why Choose Us Section --- */
+        #why-us h2 {
+            margin-bottom: 50px;
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .advantage-card {
+            background-color: var(--color-white);
+            padding: 40px 30px;
+            border-radius: var(--radius-default);
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .advantage-card i {
+            font-size: 3em;
+            color: var(--color-teal);
+            margin-bottom: 20px;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+
+        /* --- Testimonials Section --- */
+        #testimonials h2 {
+            color: var(--color-white);
+            margin-bottom: 50px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: var(--radius-default);
+            font-style: italic;
+            border-left: 5px solid var(--color-teal);
+        }
+        
+        .testimonial-card .quote {
+            color: var(--color-white);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card .customer {
+            font-weight: 600;
+            color: var(--color-teal);
+            font-style: normal;
+            text-align: right;
+        }
+
+
+        /* --- Contact Us Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr; /* Info slightly narrower than form */
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            margin-top: 0;
+        }
+
+        .contact-info .details {
+            margin-top: 25px;
+        }
+
+        .contact-info .details p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: var(--color-navy);
+            font-weight: 500;
+        }
+
+        .contact-info .details i {
+            color: var(--color-teal);
+            margin-right: 10px;
+        }
+
+        .contact-form {
+            background-color: var(--color-white);
+            padding: 40px;
+            border-radius: var(--radius-default);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--color-teal);
+            box-shadow: 0 0 0 3px rgba(30, 131, 139, 0.1);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--color-navy);
+            color: var(--color-white);
+            padding: 25px 0;
+            font-size: 0.9em;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            
+            .why-us-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                margin-top: 30px;
+            }
+
+            /* KEY NAVBAR CHANGES for Tablet/Medium Screens 🚨 */
+            #navbar .container {
+                /* Changed to space-between for the logo/toggle on the same row */
+                flex-direction: row; 
+            }
+            
+            #navbar ul {
+                /* Hide the menu by default on medium screens */
+                display: none; 
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                margin: 15px 0 0 0;
+                padding-bottom: 10px;
+            }
+            
+            #navbar ul.active { /* Class added by JavaScript */
+                display: flex;
+            }
+            
+            #navbar ul li {
+                margin: 10px 0; /* Stack vertically, center items */
+            }
+            
+            .menu-toggle {
+                display: block; /* Show hamburger icon */
+            }
+            
+            #hero {
+                padding: 120px 0;
+                min-height: 60vh;
+            }
+
+            .hero-content h1 {
+                font-size: 3em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .service-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="#">DailyEase Services</a></h1>
+            <div class="menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-list">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact" class="btn-nav">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="hero" class="section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>DailyEase Services</h1>
+                <p class="tagline">Making Everyday Life Easier</p>
+                <a href="#contact" class="btn btn-primary">Book Your First Service Today</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="section light-bg">
+        <div class="container text-center">
+            <h2>Your Reliable One-Stop Hub</h2>
+            <p class="lead">DailyEase Services is dedicated to providing professional, trustworthy, and efficient general services right to your doorstep. From sparkling clean homes to those tricky small repairs and urgent deliveries, we handle the busywork so you can focus on what truly matters. Consider us your reliable partner in simplifying modern life.</p>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="text-center">Our Core Services</h2>
+            <div class="service-grid">
+
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <div class="service-image-placeholder">
+                        <img src="cleaning.jpeg" alt="Home Cleaning" class="service-img">
+                    </div>
+                    <h3>Home Cleaning</h3>
+                    <p>Professional deep cleaning and scheduled maintenance for a spotless home.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-image-placeholder">
+                        <img src="repair.jpeg" alt="Small Repairs" class="service-img">
+                    </div>
+                    <h3>Small Repairs</h3>
+                    <p>Fixing the small things: plumbing leaks, electrical faults, and furniture assembly.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="service-image-placeholder">
+                        <img src="laundry.jpeg" alt="Laundry & Dry Cleaning" class="service-img">
+                    </div>
+                    <h3>Laundry & Dry Cleaning</h3>
+                    <p>Convenient pick-up, wash, fold, and drop-off service.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <div class="service-image-placeholder">
+                        <img src="delivery.jpeg" alt="Urgent Deliveries" class="service-img">
+                    </div>
+                    <h3>Urgent Deliveries</h3>
+                    <p>Fast, secure, and reliable delivery of documents and small parcels.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="service-image-placeholder">
+                        <img src="assistance.jpeg" alt="Personal Assistance" class="service-img">
+                    </div>
+                    <h3>Personal Assistance</h3>
+                    <p>Errands, scheduling, shopping, and general administrative help.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="section light-bg">
+        <div class="container">
+            <h2 class="text-center">Why Choose DailyEase?</h2>
+            <div class="why-us-grid">
+                <div class="advantage-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Unwavering Reliability</h3>
+                    <p>Our team is vetted, trained, and committed to punctuality and professionalism. </p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Transparent Affordability</h3>
+                    <p>Clear, competitive pricing with no hidden fees. Quality service that doesn't break the bank.</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Exceptional Customer Care</h3>
+                    <p>We listen, we adapt, and we follow up. Your satisfaction is the heart of our service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section dark-bg">
+        <div class="container">
+            <h2 class="text-center">Trusted By Our Community</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="quote">"DailyEase have made my life so easy! The cleaner was so thorough. I've finally reclaimed my weekends. Highly recommend!"</p>
+                    <p class="customer">- Shiro, Westlands</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"I had a small plumbing issue I kept postponing. The DailyEase technician came on time, fixed it, and the price was fair. Good job, keep it up!"</p>
+                    <p class="customer">- Ken, Kilimani</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"My go-to for urgent document deliveries across town. They are fast and super professional. Wako sawa!"</p>
+                    <p class="customer">- Asha, Mombasa Road</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section light-bg">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p>Ready to simplify your day? Reach out to us today to book your service or get a free quote.</p>
+                <div class="details">
+                    <p><i class="fas fa-phone"></i> +254 798 000 222 (Call/WhatsApp)</p>
+                    <p><i class="fas fa-envelope"></i> booking@dailyeaseservices.co.ke</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name *" required>
+                <input type="email" placeholder="Your Email *" required>
+                <select required>
+                    <option value="" disabled selected>Select Service of Interest *</option>
+                    <option value="cleaning">Home Cleaning</option>
+                    <option value="repairs">Small Repairs</option>
+                    <option value="laundry">Laundry Service</option>
+                    <option value="delivery">Urgent Delivery</option>
+                    <option value="assistance">Personal Assistance</option>
+                </select>
+                <textarea placeholder="Tell us more about your need..."></textarea>
+                <button type="submit" class="btn btn-primary">Send My Request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2025 Orlantech Innovations. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling script
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                //  Close mobile menu when a link is clicked 🚨
+                const navList = document.getElementById('nav-list');
+                if (navList.classList.contains('active')) {
+                    navList.classList.remove('active');
+                }
+            });
+        });
+        
+        // Mobile Menu Toggle 🚨
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            const navList = document.getElementById('nav-list');
+            navList.classList.toggle('active');
+            
+            
+            const icon = this.querySelector('i');
+            if (navList.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+
+</body>
+</html>
