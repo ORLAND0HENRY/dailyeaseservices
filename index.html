@@ -357,7 +357,7 @@
         /* --- Contact Us Section --- */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1.2fr 2fr; /* Info slightly narrower than form */
+            grid-template-columns: 1.2fr 2fr; 
             gap: 60px;
             align-items: start;
         }
@@ -436,7 +436,6 @@
 
             /* KEY NAVBAR CHANGES for Tablet/Medium Screens 🚨 */
             #navbar .container {
-                /* Changed to space-between for the logo/toggle on the same row */
                 flex-direction: row; 
             }
             
@@ -675,7 +674,7 @@
                     behavior: 'smooth'
                 });
                 
-                //  Close mobile menu when a link is clicked 🚨
+                //  Close mobile menu when a link is 
                 const navList = document.getElementById('nav-list');
                 if (navList.classList.contains('active')) {
                     navList.classList.remove('active');
@@ -683,7 +682,7 @@
             });
         });
         
-        // Mobile Menu Toggle 🚨
+        // Mobile Menu Toggle 
         document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
             const navList = document.getElementById('nav-list');
             navList.classList.toggle('active');
